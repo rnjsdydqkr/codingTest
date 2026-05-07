@@ -15,6 +15,11 @@ print(solution("(())()"))
 print(solution("(()("))
 print(solution("())"))
 
+print(refactoring("()()"))
+print(refactoring("(())()"))
+print(refactoring("(()("))
+print(refactoring("())"))
+
 func solution(_ s: String) -> Bool {
   var stack: [Character] = []
   
@@ -25,6 +30,22 @@ func solution(_ s: String) -> Bool {
       if stack.last == "(" {
           stack.removeLast()
       } else if stack.isEmpty {
+        return false
+      }
+    }
+  }
+  
+  return stack.isEmpty
+}
+
+func refactoring(_ s: String) -> Bool {
+  var stack: [Character] = []
+  
+  for char in s {
+    if char == "(" {
+      stack.append(char)
+    } else {
+      if stack.popLast() == nil {
         return false
       }
     }
