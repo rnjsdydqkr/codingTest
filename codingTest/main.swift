@@ -8,6 +8,32 @@
 import Foundation
 
 // *********************
+// 올바른 괄호 (Valid Parentheses)
+// *********************
+print(solution("()()"))
+print(solution("(())()"))
+print(solution("(()("))
+print(solution("())"))
+
+func solution(_ s: String) -> Bool {
+  var stack: [Character] = []
+  
+  for char in s {
+    if char == "(" {
+      stack.append(char)
+    } else if char == ")" {
+      if stack.last == "(" {
+          stack.removeLast()
+      } else if stack.isEmpty {
+        return false
+      }
+    }
+  }
+  
+  return stack.isEmpty
+}
+
+// *********************
 // 배열 내 두 수의 합 찾기
 // *********************
 
